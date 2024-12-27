@@ -72,7 +72,7 @@ export const { handlers, signIn, signOut, auth } = NextAuth({
         token.username = user.username;
         token.picture = user.image;
       }
-      console.log("token", token);
+      // console.log("token", token);
       return token;
     },
     async session({ session, token }) {
@@ -86,7 +86,7 @@ export const { handlers, signIn, signOut, auth } = NextAuth({
           emailVerified: null,
         };
       }
-      console.log("session: ", session);
+      // console.log("session: ", session);
       return session;
     },
   },

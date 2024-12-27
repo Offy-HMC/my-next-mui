@@ -8,10 +8,10 @@ export async function middleware(request: NextRequest) {
     const { pathname } = request.nextUrl;
     const session = await auth();
 
-    // console.info(
-    //   `middleware_request_received_${new Date().toISOString()}:`,
-    //   `${request.method.toUpperCase()} - ${request.url}`
-    // );
+    console.info(
+      `middleware_request_received_${new Date().toISOString()}:`,
+      `${request.method.toUpperCase()} - ${request.url}`
+    );
     // for public path it will return to the page
     // if (isPublicPathname(pathname)) {
     //   return NextResponse.next();
@@ -19,10 +19,10 @@ export async function middleware(request: NextRequest) {
 
     if (pathname !== LOGIN_PATH && (!session || !isValidSession(session))) {
       const response = NextResponse.redirect(new URL(LOGIN_PATH, request.url));
-      // console.error(
-      //   `middleware_response_sent_error_${new Date().toISOString()}:`,
-      //   `${response.status}, body: ${response.body}`
-      // );
+      console.error(
+        `middleware_response_sent_error_${new Date().toISOString()}:`,
+        `${response.status}, body: ${response.body}`
+      );
       return response;
     }
 
@@ -34,10 +34,10 @@ export async function middleware(request: NextRequest) {
     // }
 
     const response = NextResponse.next();
-    // console.info(
-    //   `middleware_response_sent_${new Date().toISOString()}:`,
-    //   `${response.status}, body: ${response.body}`
-    // );
+    console.info(
+      `middleware_response_sent_${new Date().toISOString()}:`,
+      `${response.status}, body: ${response.body}`
+    );
 
     return response;
   } catch (error) {
