@@ -3,18 +3,15 @@ import { AppBar, Toolbar, Box, Stack, Avatar } from "@mui/material";
 
 interface NavbarProps {
   username: string | null | undefined;
-  name?: string | null;
 }
 
-export default function Navbar({ username, name }: NavbarProps) {
-  const userName = name?.replace(/\b\w/g, (char) => char.toUpperCase());
-
+export default function Navbar({ username }: NavbarProps) {
   return (
     <AppBar
       position="static"
       sx={{
         backgroundColor: "transparent",
-        boxShadow: "none",
+        // boxShadow: "none",
       }}
     >
       <Toolbar>
@@ -24,14 +21,17 @@ export default function Navbar({ username, name }: NavbarProps) {
           justifyContent={"flex-end"}
           alignItems={"center"}
         >
-          <Avatar alt={userName} {...stringAvatar(userName || "unknown", 32)} />
+          <Avatar
+            alt={username || ""}
+            {...stringAvatar(username || "unknown", 32)}
+          />
           <Box
             ml={1.5}
-            color={"whitesmoke"}
+            color={"var(--foreground)"}
             fontSize={18}
             fontWeight={"medium"}
           >
-            {username} - {userName}
+            {username}
           </Box>
         </Stack>
       </Toolbar>

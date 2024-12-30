@@ -27,7 +27,7 @@ export default function FormLogin() {
       });
 
       if (!response?.error) {
-        router.push("/dashboard"); // Replace with your desired route
+        router.push("/dashboard");
       } else {
         console.error("something wrong", response.error);
 
@@ -49,6 +49,7 @@ export default function FormLogin() {
           type="text"
           {...register("username")}
           label="username"
+          placeholder="username"
           slotProps={{
             input: {
               startAdornment: (
@@ -65,6 +66,7 @@ export default function FormLogin() {
           type="password"
           {...register("password")}
           label="password"
+          placeholder="password"
           slotProps={{
             input: {
               startAdornment: (
@@ -78,34 +80,6 @@ export default function FormLogin() {
           helperText={errors.password && errors.password.message}
         />
       </Stack>
-      {/* <Stack>
-        <Stack
-          direction={"row"}
-          alignItems={"center"}
-          // border={1}
-          boxShadow={2}
-          borderRadius={2.5}
-          py={1.5}
-          px={2}
-        >
-          <LockRounded />
-          <TextField
-            type="password"
-            {...register("password")}
-            label="password"
-          />
-        </Stack>
-        {errors.password && (
-          <Typography color="error.main" mt={1} variant="body1" gutterBottom>
-            {errors.password.message}
-          </Typography>
-        )}
-      </Stack>
-      {errorMessage && (
-        <Typography color="error.main" variant="body1" gutterBottom>
-          {errorMessage}
-        </Typography>
-      )} */}
 
       <Stack direction="row" justifyContent={"center"} mb={2}>
         <Button
